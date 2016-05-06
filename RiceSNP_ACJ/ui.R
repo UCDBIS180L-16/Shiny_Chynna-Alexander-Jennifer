@@ -5,7 +5,7 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Phenotype and Population"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(

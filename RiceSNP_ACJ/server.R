@@ -50,7 +50,7 @@ shinyServer(function(input, output) {
     
     
     
-    pl <- ggplot(data = data.pheno.mds,
+    pl <- ggplot(data = data.pheno.mds, #Stuff Jen did. 
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
                  aes_string(x=input$popID,
@@ -59,7 +59,7 @@ shinyServer(function(input, output) {
                  )
     )
     
-    # draw the boxplot for the specified trait
+    # draw the boxplot for the specified trait #Stuff Jen did
     if (input$plot == "Boxplot")
       pl + geom_boxplot()
     else 

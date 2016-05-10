@@ -47,15 +47,15 @@ shinyServer(function(input, output) {
     
     # set up the plot
     data.pheno.mds.melt <- melt(data.pheno.mds,id.var="Region")
-    data.pheno.mds.melt.subs <- subset(data.pheno.mds.melt, Region==input$trait )
+    
     
     
      pl <- ggplot(data = data.pheno.mds.melt.subs,
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
                  aes_string(x="Region",
-                            y="value",
-                            fill="variable"
+                            y="trait",
+                            fill="Region"
                  )
     )
     

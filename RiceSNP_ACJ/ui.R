@@ -4,30 +4,33 @@ library(shiny)
 shinyUI(fluidPage( #create the overall page
   
   # Application title
-  titlePanel("Rice SNPs by Ancestral Populations"),
+  titlePanel("Iris Data"),
   
   # Some helpful information
-  helpText("This application allows the user to create a boxplot, historgram, and violin plot
-           of Rice SNP data from several ancestral rice populations for several traits."),
+  helpText("This application creates a boxplot to show difference between",
+           "iris species.  Please use the radio box below to choose a trait",
+           "for plotting"),
   
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
-      selectInput("popID", "Population:",
-                  list("Population 1" = "1", 
-                       "Population 2" = "2",
-                       "Population 3" = "3",
-                       "Population 4" = "4")),
+      radioButtons("Plot",
+                   "Choose a plot to display:",
+                   c("Violin Plot",
+                     "Boxplot")),
+      
+      
       radioButtons("trait", #the input variable that the value will go into
                    "Choose a trait to display:",
                    c("Alu.Tol",
-                     "Amylose.content",
-                     "Alkali.spreading.value",
-                     "Protein.content")
+                     "Plant.height",
+                     "Panicle.length",
+                     "Seed.length",
+                     "Seed.width")
       )),
     
     # Show a plot of the generated distribution
-    mainPanel(plotOutput("boxPlot")
+    mainPanel(plotOutput(input$plot)
     )
   )
 ))

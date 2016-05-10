@@ -8,7 +8,7 @@ shinyUI(fluidPage( #create the overall page
   
   # Some helpful information
   helpText("This application creates a scatterplot to display SNPs and",
-           "associations with traits in rice".  "Please use the radio box",
+           "associations with traits in rice. Please use the radio box",
           "below to choose a trait",
            "for plotting"),
   

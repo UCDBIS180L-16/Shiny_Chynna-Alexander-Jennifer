@@ -4,7 +4,7 @@ library(shiny)
 shinyUI(fluidPage( #create the overall page
   
   # Application title
-  titlePanel("Iris Data"),
+  titlePanel("Rice SNP Data by Population"),
   
   # Some helpful information
   helpText("This application creates a boxplot to show difference between",
@@ -18,7 +18,9 @@ shinyUI(fluidPage( #create the overall page
                   label = "Choose a trait to display:",
                   choices = c("Amylose.content",
                               "Alu.Tol",
-                              "Protein.content")
+                              "Protein.content",
+                              "Panicle.number.per.plant",
+                              "Seed.number.per.panicle")
       )),
     
     # Show a plot of the generated distribution

@@ -7,8 +7,8 @@ shinyUI(fluidPage( #create the overall page
   titlePanel("Rice SNP Data by Population"),
   
   # Some helpful information
-  helpText("This application creates a boxplot to show difference between",
-           "iris species.  Please use the radio box below to choose a trait",
+  helpText("This application creates boxplots to distinguish certain traits for",
+           "rice populations.  Please use the dropdown menu to choose a trait",
            "for plotting"),
   
   # Sidebar with a radio box to input which trait will be plotted

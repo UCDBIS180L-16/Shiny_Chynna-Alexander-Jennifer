@@ -9,6 +9,7 @@ data.geno.2500 <- data.geno[ , sample(ncol(data.geno), 2500)]
 geno.numeric <- data.matrix(data.geno.2500)
 genDist <- as.matrix(dist(geno.numeric))
 geno.mds <- as.data.frame(cmdscale(genDist))
+data.merged <- merge(geno.mds,data.pheno, by.x = "row.names", by.y = 1)
 data.geno.pheno <- merge(geno.mds, data.pheno, by= "row.names")
 data.geno.2500.c <- apply(data.geno.2500, 2, as.character)
 data.geno.2500.ps <- matrix("", nrow=nrow(data.geno.2500.c)* 2, ncol = ncol(data.geno.2500.c))
@@ -17,7 +18,7 @@ for (i in 1:nrow(data.geno.2500.c)) {
   data.geno.2500.ps[(i - 1) * 2 + 2,] <- substr(data.geno.2500.c[i, ], 2, 2)
 }
 load("~/ps4.2500.RData")
-names(ps4)
+
 round(head(ps4$AmPr), 3)
 table(ps4$AmId)
 ps4.df <- as.data.frame(cbind(round(ps4$AmPr, 3), ps4$AmId))
@@ -29,9 +30,8 @@ ps4.df.melt <- melt(ps4.df,id.vars=c("popID","sampleID"))
 geno.mds$popID <- factor(ps4$AmId)
 colnames(ps4$AmPr) <- paste("pr", 1:4, sep = "")
 geno.mds <- cbind(geno.mds, ps4$AmPr)
-save(data.pheno, geno.mds, file = "data_from_SNP_lab.Rdata")
-load("data_from_SNP_lab.Rdata")
-data.pheno.mds <- merge(geno.mds, data.pheno, by = "row.names", all=T)
+data.pheno.mds <- merge(geno.mds,data.pheno,by.x = "row.names", by.y = 1,all=T)
+
 
 # Define server logic required to draw a boxplot
 shinyServer(function(input, output) {
@@ -46,16 +46,25 @@ shinyServer(function(input, output) {
   output$boxPlot <- renderPlot({
     
     # set up the plot
+    
+    
+    
+    
     pl <- ggplot(data = data.pheno.mds,
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
                  aes_string(x=input$popID,
-                            y=input$trait,
-                            fill="popID"
+                            y=input$traits,
+                            fill=input$popID
                  )
     )
     
     # draw the boxplot for the specified trait
-    pl + geom_boxplot()
+    if (input$plot == "Boxplot")
+      pl + geom_boxplot()
+    else 
+      pl + geom_violin()
   })
 })
+
+

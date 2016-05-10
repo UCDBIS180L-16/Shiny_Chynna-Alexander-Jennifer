@@ -28,6 +28,9 @@ shinyUI(fluidPage( #create the overall page
                      "Seed.length",
                      "Seed.width")
       )),
+    radioButtons("popID",
+                 "Choose popID",
+                 c("1", "2", "3", "4")),
     
     # Show a plot of the generated distribution
     mainPanel(plotOutput(input$plot)

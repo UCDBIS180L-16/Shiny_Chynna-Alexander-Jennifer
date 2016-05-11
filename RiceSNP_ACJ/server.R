@@ -2,7 +2,7 @@
 library(shiny)
 library(ggplot2)
 
-load("Rice_Data")
+load("Rice_Data2")
 
 # Define server logic required to draw a boxplot
 shinyServer(function(input, output) {
@@ -17,11 +17,12 @@ shinyServer(function(input, output) {
   output$boxPlot <- renderPlot({
     
     # set up the plot
-    pl <- ggplot(data = rice,
+    pl <- ggplot(data = rice2,
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
                  aes_string(x="popID",
-                            y=input$trait
+                            y=input$trait,
+                            fill="Region"
                  )
     )
     

@@ -32,7 +32,7 @@ shinyUI(fluidPage( #create the overall page
       )),
     
     # Shows plot with desired parameters
-    mainPanel(plotOutput("plot")
+    mainPanel(plotOutput("plot"), textOutput("text1")
     )
   )
 ))

@@ -16,7 +16,7 @@ shinyUI(fluidPage( #create the overall page
       #Creates a dropdown menu for use to choose plot type
       selectInput("plot",
                   label = "Choose the type of plot:",
-                  choices =  c("Violin",
+                  choices =  c("Violin Plot",
                                "Boxplot",
                                "Histogram")
                   

@@ -28,7 +28,7 @@ shinyUI(fluidPage( #create the overall page
                               "Aluminum tolerance" = "Alu.Tol",
                               "Protein content" = "Protein.content",
                               "Panicles per plant" = "Panicle.number.per.plant",
-                              "Seeds per plant" = "Seed.number.per.panicle")
+                              "Seeds per panicle" = "Seed.number.per.panicle")
       )),
     
     # Shows plot with desired parameters

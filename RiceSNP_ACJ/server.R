@@ -7,6 +7,9 @@ load("Rice_Data2")
 # Define server logic required to draw a boxplot
 shinyServer(function(input, output) {
   
+  #output will be a sentence summary describing the graph made.   
+  output$text1 <- renderText({paste("Congratulations! You made a",input$plot,"based upon", input$trait, ".")})
+  
   #output will be a plot of the following format
   output$plot <- renderPlot({
     

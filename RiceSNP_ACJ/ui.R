@@ -14,17 +14,24 @@ shinyUI(fluidPage( #create the overall page
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
-      selectInput("trait", #the input variable that the value will go into
-                  label = "Choose a trait to display:",
-                  choices = c("Amylose.content",
-                              "Alu.Tol",
-                              "Protein.content",
-                              "Panicle.number.per.plant",
-                              "Seed.number.per.panicle")
+      selectInput("plot",
+                  label = "Choose the type of graph:",
+                  choices =  c("Violin",
+                               "Boxplot")
+                  
       )),
     
-    # Show a plot of the generated distribution
-    mainPanel(plotOutput("boxPlot")
-    )
+    selectInput("trait", #the input variable that the value will go into
+                label = "Choose a trait to display:",
+                choices = c("Amylose.content",
+                            "Alu.Tol",
+                            "Protein.content",
+                            "Panicle.number.per.plant",
+                            "Seed.number.per.panicle")
+    )),
+  
+  # Show a plot of the generated distribution
+  mainPanel(plotOutput("plot")
   )
-))
+)
+)

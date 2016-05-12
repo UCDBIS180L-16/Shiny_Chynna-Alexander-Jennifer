@@ -1,26 +1,27 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
+# Define UI
 shinyUI(fluidPage( #create the overall page
   
   # Application title
   titlePanel("Rice SNP Data by Population"),
   
-  # Some helpful information
-  helpText("This application creates boxplots and violin plots to distinguish certain traits for",
-           "rice populations.  Please use the dropdown menu to choose a trait",
+  helpText("This application creates boxplots and violin plots to illustrate the variation in certain traits for",
+           "rice populations. Populations are divided based on ancestral population. Please use the dropdown menu to choose a trait",
            "for plotting"),
   
-  # Sidebar with a radio box to input which trait will be plotted
+  # Creates sidebar
   sidebarLayout(
     sidebarPanel(
+      #Creates a dropdown menu for use to choose plot type
       selectInput("plot",
-                  label = "Choose the type of graph:",
+                  label = "Choose the type of plot:",
                   choices =  c("Violin",
-                               "Boxplot")
+                               "Boxplot",
+                               "Histogram")
                   
       ),
-      
+      #Creates dropdown menu for user to choose trait to plot
       selectInput("trait",  #the input variable that the value will go into
                   label = "Choose a trait to display:",
                   choices = c("Amylose.content",
@@ -30,7 +31,7 @@ shinyUI(fluidPage( #create the overall page
                               "Seed.number.per.panicle")
       )),
     
-    # Show a plot of the generated distribution
+    # Shows plot with desired parameters
     mainPanel(plotOutput("plot")
     )
   )

@@ -14,9 +14,10 @@ shinyServer(function(input, output) {
   #     when inputs change
   #  2) Its output type is a plot
   
-  output$boxPlot <- renderPlot({
+  output$plot <- renderPlot({
     
     # set up the plot
+    
     pl <- ggplot(data = rice2,
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
@@ -27,6 +28,11 @@ shinyServer(function(input, output) {
     )
     
     # draw the boxplot for the specified trait
-    pl + geom_boxplot()
+    if (input$plot == "Boxplot"){
+      pl + geom_boxplot()
+    }
+    else {
+      pl + geom_violin()
+    }
   })
 })

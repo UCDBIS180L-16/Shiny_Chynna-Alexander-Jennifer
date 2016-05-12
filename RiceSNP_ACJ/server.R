@@ -26,12 +26,12 @@ shinyServer(function(input, output) {
     }
     #if histopgram option is chosen, draw histogram for chose trait
     #facet_wrap makes an individual histogram for each popID
-    if (input$plot == "Histogram"){
-      ggplot(data = rice2, aes_string(x = input$trait, fill = "popID")) + geom_histogram() + facet_wrap(facets = ~popID, ncol=2)
+    else if (input$plot == "Violin"){
+      pl + geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
     }
     #otherwise make violin plot with drawn quartiles
-    else {
-      pl + geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+    else{
+      ggplot(data = rice2, aes_string(x = input$trait, fill = "popID")) + geom_histogram(binwidth = 1) + facet_wrap(facets = ~popID, ncol=2)
     }
   })
 })

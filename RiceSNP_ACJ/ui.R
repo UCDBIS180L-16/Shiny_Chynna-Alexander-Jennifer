@@ -24,11 +24,11 @@ shinyUI(fluidPage( #create the overall page
       #Creates dropdown menu for user to choose trait to plot
       selectInput("trait",  #the input variable that the value will go into
                   label = "Choose a trait to display:",
-                  choices = c("Amylose.content",
-                              "Alu.Tol",
-                              "Protein.content",
-                              "Panicle.number.per.plant",
-                              "Seed.number.per.panicle")
+                  choices = c("Amylose content" = "Amylose.content",
+                              "Aluminum tolerance" = "Alu.Tol",
+                              "Protein content" = "Protein.content",
+                              "Panicles per plant" = "Panicle.number.per.plant",
+                              "Seeds per plant" = "Seed.number.per.panicle")
       )),
     
     # Shows plot with desired parameters

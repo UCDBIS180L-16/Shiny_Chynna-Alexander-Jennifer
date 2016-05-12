@@ -34,7 +34,7 @@ shinyServer(function(input, output) {
     #if histogram option is chosen, draw histogram for chose trait
     #facet_wrap makes an individual histogram for each popID
     else{
-      ggplot(data = rice2, aes_string(x = input$trait, fill = "popID")) + geom_histogram(binwidth = 1) + facet_wrap(facets = ~popID, ncol=2)
+      ggplot(data = rice2, aes_string(x = input$trait, fill = "popID")) + geom_histogram() + facet_wrap(facets = ~popID, ncol=2)
     }
   })
 })

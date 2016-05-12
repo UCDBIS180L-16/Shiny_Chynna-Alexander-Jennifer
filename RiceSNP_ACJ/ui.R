@@ -6,9 +6,9 @@ shinyUI(fluidPage( #create the overall page
   # Application title
   titlePanel("Rice SNP Data by Population"),
   
-  helpText("This application creates boxplots and violin plots to illustrate the variation in certain traits for",
+  helpText("This application creates boxplots, violin plots, and histograms to illustrate the variation in certain traits for",
            "rice populations. Populations are divided based on ancestral population. Please use the dropdown menu to choose a trait",
-           "for plotting"),
+           "for plotting."),
   
   # Creates sidebar
   sidebarLayout(
